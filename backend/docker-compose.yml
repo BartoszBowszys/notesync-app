@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: notesync-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: notesync
+      POSTGRES_PASSWORD: notesync
+      POSTGRES_DB: notesync
+    ports:
+      - "5432:5432"
+    volumes:
+      - notesync_pgdata:/var/lib/postgresql/data
+
+volumes:
+  notesync_pgdata:
