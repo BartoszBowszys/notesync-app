@@ -1,0 +1,121 @@
+.editor-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.editor-page__empty {
+  padding: var(--space-6);
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.editor-page__title {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+
+.editor-page__content {
+  font-size: var(--font-size-base);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  resize: vertical;
+  font-family: inherit;
+}
+
+.editor-page__tags-section {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.editor-page__tags-title {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.editor-page__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.editor-page__add-tag {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.editor-page__add-tag input {
+  flex: 1;
+  padding: var(--space-2);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface-alt);
+  color: var(--color-text);
+}
+
+.editor-page__add-tag button {
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface-alt);
+  cursor: pointer;
+}
+
+.editor-page__error {
+  margin: 0;
+  color: var(--color-danger);
+  font-size: var(--font-size-sm);
+}
+
+.editor-page__actions {
+  display: flex;
+  gap: var(--space-3);
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.editor-page__actions button {
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+}
+
+.editor-page__cancel {
+  background-color: var(--color-surface-alt);
+  color: var(--color-text);
+}
+
+.editor-page__delete {
+  background-color: var(--color-danger);
+  color: #ffffff;
+}
+
+.editor-page__save {
+  background-color: var(--color-accent);
+  color: var(--color-accent-contrast);
+}
+
+.editor-page__save:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
