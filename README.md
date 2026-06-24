@@ -1,6 +1,10 @@
 # NoteSync
 
-Organizer notatek z synchronizacją, tagami i wyszukiwaniem — projekt semestralny na przedmiot **"Projektowanie i programowanie aplikacji PWA i mobilnych cross-platform"** (WSB Merito Wrocław), realizowany indywidualnie.
+Organizer notatek z synchronizacją, tagami i wyszukiwaniem — projekt semestralny na przedmiot **"Projektowanie i programowanie aplikacji PWA i mobilnych cross-platform"** (WSB Merito Wrocław), realizowany przez:
+Bartosz Bowszys 95957
+Remigiusz Jasicki 96159
+Oliwier Hanc 95941
+Filip Sontowski 94602
 
 Jedno konto, jeden backend, dwa kliencki: **PWA** (przeglądarka, offline-first) i **aplikacja mobilna** (Expo/React Native, z aparatem). Zmiana notatki w jednym kliencie jest widoczna w drugim po synchronizacji.
 
