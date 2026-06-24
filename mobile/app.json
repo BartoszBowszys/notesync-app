@@ -1,0 +1,35 @@
+{
+  "expo": {
+    "name": "NoteSync",
+    "slug": "notesync",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "backgroundColor": "#f8fafc",
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "com.bartoszbowszys.notesync",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "backgroundColor": "#6366f1",
+        "foregroundImage": "./assets/android-icon-foreground.png"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-secure-store",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "NoteSync potrzebuje dostępu do zdjęć, aby dodawać obrazy do notatek.",
+          "cameraPermission": "NoteSync potrzebuje dostępu do kamery, aby robić zdjęcia do notatek."
+        }
+      ]
+    ]
+  }
+}

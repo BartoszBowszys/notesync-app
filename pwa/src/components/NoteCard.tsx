@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import type { StoredNote } from '../offline/db';
+import { parseNoteContent } from '../utils/noteContent';
 import { TagBadge } from './TagBadge';
 import './NoteCard.css';
 
@@ -13,6 +14,7 @@ function excerpt(content: string, length = 120): string {
 
 export function NoteCard({ note }: { note: StoredNote }) {
   const isPending = note.id.startsWith('temp-');
+  const { text, photos } = parseNoteContent(note.content);
 
   return (
     <Link to={`/notes/${note.id}`} className="note-card">
@@ -20,7 +22,10 @@ export function NoteCard({ note }: { note: StoredNote }) {
         <h3 className="note-card__title">{note.title || 'Bez tytułu'}</h3>
         {isPending && <span className="note-card__pending">oczekuje na sync</span>}
       </div>
-      <p className="note-card__excerpt">{excerpt(note.content) || 'Brak treści'}</p>
+      <p className="note-card__excerpt">
+        {photos.length > 0 && '📷 '}
+        {excerpt(text) || (photos.length > 0 ? 'Zdjęcie' : 'Brak treści')}
+      </p>
       <div className="note-card__footer">
         <div className="note-card__tags">
           {note.tags.map((tag) => (

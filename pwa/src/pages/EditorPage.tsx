@@ -4,6 +4,7 @@ import { TagBadge } from '../components/TagBadge';
 import { createTag } from '../api/tags';
 import { createNoteAware, deleteNoteAware, getNote, listTags, updateNoteAware } from '../offline/notesRepository';
 import type { Tag } from '../types';
+import { parseNoteContent, serializeNoteContent } from '../utils/noteContent';
 import './EditorPage.css';
 
 export function EditorPage() {
@@ -13,6 +14,7 @@ export function EditorPage() {
 
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  const [photos, setPhotos] = useState<string[]>([]);
   const [tags, setTags] = useState<Tag[]>([]);
   const [selectedTagIds, setSelectedTagIds] = useState<Set<number>>(new Set());
   const [newTagName, setNewTagName] = useState('');
@@ -32,8 +34,10 @@ export function EditorPage() {
           setError('Notatka nie została znaleziona.');
           return;
         }
+        const parsed = parseNoteContent(note.content);
         setTitle(note.title);
-        setContent(note.content);
+        setContent(parsed.text);
+        setPhotos(parsed.photos);
         setSelectedTagIds(new Set(note.tags.map((tag) => tag.id)));
       })
       .finally(() => setLoading(false));
@@ -66,7 +70,7 @@ export function EditorPage() {
     setSaving(true);
     setError(null);
     try {
-      const input = { title, content, tag_ids: Array.from(selectedTagIds) };
+      const input = { title, content: serializeNoteContent(content, photos), tag_ids: Array.from(selectedTagIds) };
       if (isNew) {
         await createNoteAware(input);
       } else if (id) {
@@ -108,6 +112,23 @@ export function EditorPage() {
         onChange={(event) => setContent(event.target.value)}
         rows={12}
       />
+
+      {photos.length > 0 && (
+        <div className="editor-page__photos">
+          {photos.map((photo, index) => (
+            <div key={index} className="editor-page__photo">
+              <img src={photo} alt={`Zdjęcie ${index + 1}`} />
+              <button
+                type="button"
+                onClick={() => setPhotos((prev) => prev.filter((_, i) => i !== index))}
+                aria-label="Usuń zdjęcie"
+              >
+                ✕
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
 
       <div className="editor-page__tags-section">
         <h2 className="editor-page__tags-title">Tagi</h2>
