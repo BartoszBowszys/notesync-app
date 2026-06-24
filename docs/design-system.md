@@ -19,8 +19,8 @@ Wspólny design system dla PWA (`pwa/src/styles/theme.css`) i przyszłej aplikac
 
 ## Typografia
 
-- Font: **Inter** (fallback: `system-ui, -apple-system, "Segoe UI", Roboto, sans-serif`)
-- Skala: `xs` 0.75rem, `sm` 0.875rem, `base` 1rem, `lg` 1.25rem, `xl` 1.5rem
+- Font: **systemowy** — PWA: `system-ui, -apple-system, "Segoe UI", Roboto, sans-serif`; mobile: natywna czcionka platformy (Roboto na Android, San Francisco na iOS) — w React Native domyślna, więc komponenty nie ustawiają `fontFamily`
+- Skala: `xs` 0.75rem / 12px, `sm` 0.875rem / 14px, `base` 1rem / 16px, `lg` 1.25rem / 20px, `xl` 1.5rem / 24px (te same wartości w `pwa/src/styles/theme.css` i `mobile/src/theme.ts`)
 
 ## Spacing / radius
 
@@ -32,8 +32,10 @@ Wspólny design system dla PWA (`pwa/src/styles/theme.css`) i przyszłej aplikac
 - **NoteCard** — karta notatki na liście: tytuł, skrócona treść, lista `TagBadge`, data ostatniej edycji
 - **TagBadge** — pill/chip z nazwą tagu, wariant klikalny (filtr) i statyczny (wyświetlanie)
 - **SearchBar** — pole wyszukiwania treści notatek z ikoną i debounce
-- **NoteEditor** — formularz edycji notatki (tytuł, treść, wybór/dodawanie tagów)
+- **NoteEditor** — formularz edycji notatki (tytuł, treść, wybór/dodawanie tagów); zaimplementowany jako widok `EditorPage`/`EditorScreen`, w mobile dodatkowo z przyciskiem aparatu
 - **AuthForm** — formularz logowania/rejestracji z przełącznikiem trybu i komunikatem błędu
+
+Wszystkie powyższe komponenty istnieją osobno w obu klientach: `pwa/src/components/*.tsx` i `mobile/src/components/*.tsx`, korzystając z tych samych tokenów (kolory, spacing, radius, font-size) zdefiniowanych w `pwa/src/styles/theme.css` i `mobile/src/theme.ts`.
 
 ## Dostępność
 
