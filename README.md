@@ -212,6 +212,7 @@ cd pwa; npm test
 - **Backend:** Railway (Nixpacks, `railway.toml` + `Procfile`) — `https://notesync-app-production.up.railway.app`. Baza: plugin PostgreSQL na Railway, połączenie po wewnętrznej sieci (`DATABASE_URL` jako referencja do usługi Postgres). Migracje uruchamiane automatycznie przy starcie procesu (`RUN_MIGRATIONS_ON_STARTUP=true`).
 - **PWA:** Vercel (`vercel.json`, build Vite) — `https://notesync-pwa.vercel.app`. Zmienna `VITE_API_URL` wskazuje na backend Railway.
 - **Mobile:** EAS Build, profil `preview` (`eas.json`) — buduje instalowalny APK ze zmienną `EXPO_PUBLIC_API_URL` ustawioną na backend Railway, bez zależności od Expo Go.
+  APK do pobrania: [notesync-preview.apk](https://expo.dev/artifacts/eas/FeV5J6czS0nWr4TCNEuTv0As-Z1h--m_rjkEYRR08rc.apk) (link wygasa 30 dni od zbudowania — w razie wygaśnięcia odbuduj przez `eas build --platform android --profile preview`).
 
 ---
 
