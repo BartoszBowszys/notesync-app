@@ -1,10 +1,30 @@
+import os
+from contextlib import asynccontextmanager
+from pathlib import Path
+
+from alembic import command
+from alembic.config import Config as AlembicConfig
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
 from app.routers import auth, notes, tags
 
-app = FastAPI(title="NoteSync API", version="0.1.0")
+BACKEND_DIR = Path(__file__).resolve().parent.parent
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Railway's dashboard "Start Command" can override railway.toml/Procfile,
+    # so migrations are run here on startup instead, gated by an env flag
+    # (off by default to keep local dev / pytest unaffected).
+    if os.getenv("RUN_MIGRATIONS_ON_STARTUP", "false").lower() == "true":
+        alembic_cfg = AlembicConfig(str(BACKEND_DIR / "alembic.ini"))
+        command.upgrade(alembic_cfg, "head")
+    yield
+
+
+app = FastAPI(title="NoteSync API", version="0.1.0", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
