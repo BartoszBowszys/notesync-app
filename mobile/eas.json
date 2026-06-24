@@ -18,7 +18,7 @@
         "buildType": "apk"
       },
       "env": {
-        "EXPO_PUBLIC_API_URL": "http://192.168.1.20:8000"
+        "EXPO_PUBLIC_API_URL": "https://notesync-app-production.up.railway.app"
       }
     },
     "production": {

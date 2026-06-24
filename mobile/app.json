@@ -16,7 +16,10 @@
       "adaptiveIcon": {
         "backgroundColor": "#6366f1",
         "foregroundImage": "./assets/android-icon-foreground.png"
-      }
+      },
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -30,6 +33,12 @@
           "cameraPermission": "NoteSync potrzebuje dostępu do kamery, aby robić zdjęcia do notatek."
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "39f08984-87df-4fd2-a23f-25f30c772df5"
+      }
+    },
+    "owner": "bartoszbowszys"
   }
 }

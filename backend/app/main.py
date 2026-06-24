@@ -39,6 +39,11 @@ app.include_router(notes.router)
 app.include_router(tags.router)
 
 
+@app.get("/", tags=["health"])
+def root() -> dict[str, str]:
+    return {"name": "NoteSync API", "docs": "/docs", "health": "/health"}
+
+
 @app.get("/health", tags=["health"])
 def health_check() -> dict[str, str]:
     return {"status": "ok"}
